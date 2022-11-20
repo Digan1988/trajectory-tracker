@@ -25,7 +25,7 @@
             <el-input v-model="form.h4" type="number"/>
           </el-form-item>
           <el-form-item label="Направление зарезки, °" required>
-            <el-input v-model="form.sidecutAngle" type="number"/>
+            <el-input v-model="form.sidecutAngle" type="number" min="0" max="360"/>
           </el-form-item>
         </el-form>
       </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="row">
       <div class="cell">
-        <LineChart />
+        <InclinoMeter :angle="form.sidecutAngle"/>
       </div>
       <div class="cell">
         <el-switch v-model="loadFromSensor"
@@ -56,8 +56,8 @@ import { reactive, ref, computed } from 'vue'
 import {useStore} from "vuex"
 import router from '@/router'
 import { ElButton, ElForm, ElFormItem, ElInput, ElSwitch, ElUpload } from 'element-plus'
-import LineChart from '@/components/Chart/LineChart.vue'
 import LayerChart from '@/components/Chart/LayerChart.vue'
+import InclinoMeter from '@/components/Chart/InclinoMeter.vue'
 
 export default {
   components: {
@@ -67,8 +67,8 @@ export default {
     ElInput,
     ElSwitch,
     ElUpload,
-    LineChart,
-    LayerChart
+    LayerChart,
+    InclinoMeter
   },
   setup() {
     const store = useStore()
