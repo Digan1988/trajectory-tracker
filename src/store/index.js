@@ -14,7 +14,6 @@ const store = createStore({
     },
     mutations: {
       setLayersParams(state, params) {
-        console.log(params);
         state.layersParams = params
       }
     }
