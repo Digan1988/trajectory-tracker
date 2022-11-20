@@ -1,5 +1,5 @@
 import { nextTick } from 'vue'
-import { createWebHistory, createRouter } from "vue-router"
+import { createWebHashHistory, createRouter } from "vue-router"
 import ParamsForm from "@/views/ParamsForm.vue"
 import ReportCharts from "@/views/ReportCharts.vue"
 import NotFound from "@/views/NotFound"
@@ -22,7 +22,7 @@ const routes = [
   ];
 
   const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
   });
 
