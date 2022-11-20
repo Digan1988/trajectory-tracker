@@ -4,29 +4,29 @@
       <el-button plain @click="back">Назад</el-button>
       <el-button type="success" plain @click="report">Отчет</el-button>
     </div>
-    <div class="row">
-      <div class="cell">
+    <el-row :gutter="10">
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <LineChart :data="chart1"/>
-      </div>
-      <div class="cell">
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <LineChart :data="chart2" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="cell">
+      </el-col>
+    </el-row>
+    <el-row :gutter="10">
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <LineChart :data="chart3"/>
-      </div>
-      <div class="cell">
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <Line3DChart :data="chart4"/>
-      </div>
-    </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 import {computed } from 'vue'
 import {useStore} from "vuex"
-import { ElButton } from 'element-plus'
+import { ElButton, ElRow, ElCol } from 'element-plus'
 import router from '@/router'
 import LineChart from '@/components/Chart/LineChart.vue'
 import Line3DChart from '@/components/Chart/Line3DChart.vue'
@@ -35,7 +35,9 @@ export default {
     components: {
     ElButton,
     LineChart,
-    Line3DChart
+    Line3DChart,
+    ElRow, 
+    ElCol
   },
   setup(){
     const store = useStore()
@@ -251,15 +253,5 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-.row {
-  display: flex;
-  flex-grow: 1;
-}
-.cell{
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  width: 50%;
 }
 </style>

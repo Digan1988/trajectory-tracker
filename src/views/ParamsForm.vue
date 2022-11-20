@@ -4,8 +4,8 @@
       <el-button type="success" plain @click="build">Построить</el-button>
       <el-button plain @click="next">Далее</el-button>
     </div>
-    <div class="row">
-      <div class="cell">
+    <el-row :gutter="10">
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <el-form
           label-position="top"
           label-width="100px"
@@ -28,16 +28,16 @@
             <el-input v-model="form.sidecutAngle" type="number" min="0" max="360"/>
           </el-form-item>
         </el-form>
-      </div>
-      <div class="cell">
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <LayerChart :params="layerChartParams"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="cell">
+      </el-col>
+    </el-row>
+    <el-row :gutter="10">
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <InclinoMeter :angle="form.sidecutAngle"/>
-      </div>
-      <div class="cell">
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <el-switch v-model="loadFromSensor"
           class="mb-2"
           active-text="Загрузка с датчика"
@@ -46,8 +46,8 @@
         <el-upload v-if="!loadFromSensor" v-model:file-list="uploadFile" action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15">
           <el-button type="primary">Выберите файл</el-button>
         </el-upload>
-      </div>
-    </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -55,7 +55,7 @@
 import { reactive, ref, computed } from 'vue'
 import {useStore} from "vuex"
 import router from '@/router'
-import { ElButton, ElForm, ElFormItem, ElInput, ElSwitch, ElUpload } from 'element-plus'
+import { ElButton, ElForm, ElFormItem, ElInput, ElSwitch, ElUpload, ElRow, ElCol } from 'element-plus'
 import LayerChart from '@/components/Chart/LayerChart.vue'
 import InclinoMeter from '@/components/Chart/InclinoMeter.vue'
 
@@ -67,6 +67,8 @@ export default {
     ElInput,
     ElSwitch,
     ElUpload,
+    ElRow, 
+    ElCol,
     LayerChart,
     InclinoMeter
   },
@@ -120,15 +122,5 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-.row {
-  display: flex;
-  flex-grow: 1;
-}
-.cell{
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  width: 50%;
 }
 </style>

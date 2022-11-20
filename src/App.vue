@@ -56,4 +56,9 @@ h1{
   color: #330033;
   font-size: 20px;
 }
+@media screen and (min-width: 400px) {
+  h1 {
+    font-size: 12px;
+  }
+}
 </style>
