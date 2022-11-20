@@ -1,3 +1,4 @@
+import { nextTick } from 'vue'
 import { createWebHistory, createRouter } from "vue-router"
 import ParamsForm from "@/views/ParamsForm.vue"
 import ReportCharts from "@/views/ReportCharts.vue"
@@ -24,5 +25,11 @@ const routes = [
     history: createWebHistory(),
     routes,
   });
+
+  router.afterEach(() =>{
+    nextTick(() => {
+      document.title = "Управление и отслеживание траектории движения гидромоторной насадки"
+    })
+  })
   
   export default router;
