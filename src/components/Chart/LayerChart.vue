@@ -1,6 +1,6 @@
 <template>
     <div class="chart-cont">
-      <svg ref="svg" width="733" height="400" viewBox="0 0 3667 2000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax">
+      <svg ref="svg" width="733" height="400" viewBox="0 0 4929 2690" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax" style="background-color:#333333">
         <defs>
           <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stop-color="#FF9933" />
@@ -24,14 +24,16 @@
               stitchTiles='stitch'/>
           </filter>
         </defs>
-        <rect x="0" y="0" width="3667" height="2000" fill="url(#Gradient1)"/>
-        <rect x="0" :y="workRect.y" width="3667" :height="workRect.height" fill="#EDC9AF" filter='url(#noiseFilter)'/>
-        <rect x="708" y="0" width="83" height="1793" fill="url(#Gradient2)" stroke="#333333"/>
-        <path :d="arcPath" stroke="#333333" fill="transparent" stroke-width="20"/>
-        <text :x="h1Text.x" :y="h1Text.y" class="label-text">{{h1Text.text}}</text>
-        <text :x="h2Text.x" :y="h2Text.y" class="label-text">{{h2Text.text}}</text>
-        <text :x="h3Text.x" :y="h3Text.y" class="label-text">{{h3Text.text}}</text>
-        <text :x="h4Text.x" :y="h4Text.y" class="label-text">{{h4Text.text}}</text>
+        <g transform="translate(0, 690)">
+          <rect x="0" y="0" width="4929" height="2000" fill="url(#Gradient1)"/>
+          <rect x="0" :y="workRect.y" width="4929" :height="workRect.height" fill="#EDC9AF" filter='url(#noiseFilter)'/>
+          <rect x="708" y="0" width="83" height="1793" fill="url(#Gradient2)" stroke="#333333"/>
+          <path :d="arcPath" stroke="#333333" fill="transparent" stroke-width="20"/>
+          <text :x="h1Text.x" :y="h1Text.y" class="label-text">{{h1Text.text}}</text>
+          <text :x="h2Text.x" :y="h2Text.y" class="label-text">{{h2Text.text}}</text>
+          <text :x="h3Text.x" :y="h3Text.y" class="label-text">{{h3Text.text}}</text>
+          <text :x="h4Text.x" :y="h4Text.y" class="label-text">{{h4Text.text}}</text>
+        </g>
       </svg>
     </div>
 </template>
@@ -69,7 +71,7 @@
       const h1Text = computed(() => {
         return {
           x: 3000, 
-          y: props.params.h1 * -1 - 10,
+          y: props.params.h1 * -1 - 40,
           text: `${props.params.h1}`
         }
       })
@@ -77,7 +79,7 @@
       const h2Text = computed(() => {
         return {
           x: 3000, 
-          y: props.params.h1 * -1 + props.params.h1 - props.params.h2 + 80,
+          y: props.params.h1 * -1 + props.params.h1 - props.params.h2 + 120,
           text: `${props.params.h2}`
         }
       })
@@ -85,7 +87,7 @@
       const h3Text = computed(() => {
         return {
           x: 808, 
-          y: props.params.h3 * -1 - 10,
+          y: props.params.h3 * -1 - 40,
           text: `${props.params.h3}`
         }
       })
@@ -95,7 +97,7 @@
         const b = depth * Math.tan(props.params.sidecutAngle * Math.PI/180)
         return {
           x: 808 + b, 
-          y: props.params.h4 * -1 + 10,
+          y: props.params.h4 * -1 + 60,
           text: `${props.params.h4}`
         }
       })
@@ -115,7 +117,7 @@
   
   <style scoped>
   .label-text{
-    font-size: 5em;
+    font-size: 8em;
     font-weight: bold;
     fill: #333333;
   }
