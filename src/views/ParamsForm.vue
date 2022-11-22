@@ -45,8 +45,8 @@
             inactive-text="Загрузка архива"
           />
           <div class="upload-block">
-            <el-upload v-if="!loadFromSensor" v-model:file-list="uploadFile" :action="uploadAction">
-              <el-button type="primary">Выберите файл</el-button>
+            <el-upload v-if="!loadFromSensor" v-model:file-list="uploadFile" :action="uploadAction" >
+              <el-button type="primary" plain>Выберите файл</el-button>
             </el-upload>
           </div>
         </div>
