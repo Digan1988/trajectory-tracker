@@ -54,11 +54,18 @@
         const y1 = props.params.h3 * -1
         const x2 = x1 + b
         const y2 = props.params.h4 * -1
-        const rx = 10
-        const ry = 5
-        const angle = 60
 
-        return `M ${x1},${y1} A ${rx},${ry} ${angle} 0, 0 ${x2},${y2}`
+        const mpx = (x2 + x1) * 0.5;
+        const mpy = (y2 + y1) * 0.5;
+
+        const theta = Math.atan2(y2 - y1, x2 - x1) - Math.PI / 2;
+
+        const offset = -20;
+
+        const c1x = mpx + offset * Math.cos(theta);
+        const c1y = mpy + offset * Math.sin(theta);
+
+        return `M ${x1} ${y1} Q ${c1x} ${c1y} ${x2} ${y2}`;
       })
 
       const workRect = computed(() => {

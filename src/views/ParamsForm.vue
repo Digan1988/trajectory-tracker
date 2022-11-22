@@ -38,14 +38,18 @@
         <InclinoMeter :angle="form.sidecutAngle"/>
       </el-col>
       <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-        <el-switch v-model="loadFromSensor"
-          class="mb-2"
-          active-text="Загрузка с датчика"
-          inactive-text="Загрузка архива"
-        />
-        <el-upload v-if="!loadFromSensor" v-model:file-list="uploadFile" action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15">
-          <el-button type="primary">Выберите файл</el-button>
-        </el-upload>
+        <div class="data-source-block">
+          <el-switch v-model="loadFromSensor"
+            class="mb-2"
+            active-text="Загрузка с датчика"
+            inactive-text="Загрузка архива"
+          />
+          <div class="upload-block">
+            <el-upload v-if="!loadFromSensor" v-model:file-list="uploadFile" :action="uploadAction">
+              <el-button type="primary">Выберите файл</el-button>
+            </el-upload>
+          </div>
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -101,15 +105,17 @@ export default {
     }
 
     var layerChartParams = computed(() => {
-      //console.log(store.state.layersParams);
       return store.state.layersParams
     })
+
+    const uploadAction = "https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
 
     return {
       form,
       loadFromSensor,
       uploadFile,
       layerChartParams,
+      uploadAction,
       build,
       next
     }
@@ -117,10 +123,23 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .params-form{
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+.data-source-block{
+  display: flex;
+  height: 100%;
+  min-height: 100px;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.upload-block{
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 }
 </style>

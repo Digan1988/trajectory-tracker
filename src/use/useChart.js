@@ -1,34 +1,33 @@
-import { ref } from 'vue'
-import Plotly from 'plotly.js-dist/plotly'
+import { computed } from 'vue'
 
-const useChart = () => {
-    const chartDiv = ref(null);
-    const buildChart = (data) => {
+const useChart = (series, xAxisRange, yAxisRange, xAxisTitle, yAxisTicksuffix) => {
+    const chart = computed(() => {
         const layout = {
             xaxis: {
-                autorange: false,
-                //side: "top",
-                visible: false,
-                range: [0, 20]
+                range: xAxisRange,
+                title: {
+                    text: xAxisTitle
+                },
+                showticklabels: false,
+                linecolor: "rgb(51,153,255)",
+                linewidth: 3
             },
             yaxis: {
-                range: [-2000, 0],
-                //autorange: true
+                range: yAxisRange,
+                title: {},
+                showticklabels: true,
+                showticksuffix: "last",
+                ticksuffix: yAxisTicksuffix,
+                linecolor: "rgb(51,153,255)",
+                linewidth: 3
             },
             showlegend: false
-        }; // It's a stub, put layout config here.
-  
-        const config = {
-          displayModeBar: false, // this is the line that hides the bar.
-        };
-  
-        Plotly.newPlot(chartDiv.value, data, layout, config);
-    }
+        }
 
-    return {
-        chartDiv,
-        buildChart
-    }
+        return { layout, data: series }
+    })
+
+    return chart
 }
 
 export default useChart

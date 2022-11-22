@@ -43,6 +43,7 @@ html, body{
 .common-layout{
   display: flex;
   height: 100vh;
+  margin-bottom: 10px;
 }
 .app-title {
   display: flex;
@@ -56,9 +57,14 @@ h1{
   color: #330033;
   font-size: 20px;
 }
-@media screen and (min-width: 400px) {
+@media screen and (max-width: 412px) {
   h1 {
     font-size: 12px;
+    width: 50%;
+    flex-grow: 1;
+  }
+  .logo{
+    font-size: 10px;
   }
 }
 </style>
