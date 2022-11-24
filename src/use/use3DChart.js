@@ -11,19 +11,19 @@ const use3DChart = (series) => {
             },
             xaxis: {
               showticklabels: false,
-              range: [0, 1000],
+              range: [Math.min(series.x), Math.max(series.x)],
               linecolor: 'rgb(51,153,255)',
               linewidth: 3
             },
             yaxis: {
               showticklabels: false,
-              range: [0, 360],
+              range: [Math.min(series.y), Math.max(series.y)],
               linecolor: 'rgb(51,153,255)',
               linewidth: 3
             },
             zaxis: {
               showticklabels: false,
-              range: [0, 1000],
+              range: [Math.min(series.z), Math.max(series.z)],
               linecolor: 'rgb(51,153,255)',
               linewidth: 3
             },

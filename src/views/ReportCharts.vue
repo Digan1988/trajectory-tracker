@@ -24,13 +24,18 @@
 </template>
 
 <script>
-import {useStore} from "vuex"
+//import {useStore} from "vuex"
 import { ElButton, ElRow, ElCol } from 'element-plus'
 import router from '@/router'
 import useChart from '@/use/useChart'
 import use3DChart from '@/use/use3DChart'
 import LineChart from '@/components/Chart/LineChart.vue'
 import Line3DChart from '@/components/Chart/Line3DChart.vue'
+
+import mock1 from '@/mock/1.json'
+import mock2 from '@/mock/2.json'
+import mock3 from '@/mock/3.json'
+import mock4 from '@/mock/4.json'
 
 export default {
     components: {
@@ -41,21 +46,21 @@ export default {
     ElCol
   },
   setup(){
-    const store = useStore()
+    //const store = useStore()
 
-    const h1 = store.state.layersParams.h1
-    const h3 = store.state.layersParams.h3
-    const angle = store.state.layersParams.sidecutAngle
+    //const h1 = store.state.layersParams.h1
+    //const h3 = store.state.layersParams.h3
+    //const angle = store.state.layersParams.sidecutAngle
 
     const chart1 = useChart([
-        {
-          x: [0, 1000],
+        /*{
+          x: [0, 20],
           y: [h1, h1],
           mode: 'lines'
-        },
+        },*/
         {
-          x: [0, 700],
-          y: [h3, h3],
+          x: mock1.x,
+          y: mock1.y,
           mode: 'lines',
           type: 'scatter',
           line: {
@@ -63,29 +68,29 @@ export default {
             width: 2
           }
       }
-    ], [0, 1000], [0, -2000], "X", " Z")
+    ], [Math.min(mock1.x), Math.min(mock1.x)], [Math.min(mock1.y), Math.min(mock1.y)], "X", " Z")
 
     const chart2 = useChart([
       {
-        x: [0, 700],
-        y: [0, angle],
+        x: mock2.x,
+        y: mock2.y,
         mode: 'lines',
         line: {
           color: 'rgb(255,51,51)',
           width: 2
         }
       }
-    ], [0, 1000], [0, 360], "X", " Y")
+    ], [Math.min(mock2.x), Math.min(mock2.x)], [Math.min(mock2.y), Math.min(mock2.y)], "X", " Y")
 
     const chart3 = useChart([
-      {
+      /*{
         x: [0, 1000],
         y: [h1, h1],
         mode: 'lines'
-      },
+      },*/
       {
-        x: [0, 600],
-        y: [h3, h3],
+        x: mock3.x,
+        y: mock3.y,
         mode: 'lines',
         type: 'scatter',
         line: {
@@ -93,13 +98,13 @@ export default {
           width: 2
         }
       }
-    ], [0, 1000], [0, -2000], 'Y', " Z")
+    ], [Math.min(mock3.x), Math.min(mock3.x)], [Math.min(mock3.y), Math.min(mock3.y)], "X", " Y")
 
     const chart4 = use3DChart([
       {
-        x: [0, 700],
-        y: [0, angle],
-        z: [0, angle],
+        x: mock4.x,
+        y: mock4.y,
+        z: mock4.z,
         opacity: 1,
         type: 'scatter3d',
         mode: 'lines',
