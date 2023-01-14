@@ -2,7 +2,7 @@
   <div class="params-form">
     <div>
       <el-button type="success" plain @click="build">Построить</el-button>
-      <el-button plain @click="next">Далее</el-button>
+      <el-button plain @click="next">Контроль</el-button>
     </div>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">

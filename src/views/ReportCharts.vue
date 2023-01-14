@@ -1,9 +1,15 @@
 <template>
   <div class="report-cont">
     <div>
-      <el-button plain @click="back">Назад</el-button>
-      <el-button type="success" plain @click="report">Отчет</el-button>
+      <el-button plain @click="back">Параметры</el-button>
+      <el-button type="success" plain @click="report">Контроль</el-button>
     </div>
+    
+    <el-row :gutter="10">
+      <el-col :xs="48" :sm="48" :md="48" :lg="24" :xl="24">
+        <JoystickController />
+      </el-col>
+    </el-row>
     <el-row :gutter="10">
       <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <LineChart :data="chart1"/>
@@ -31,6 +37,7 @@ import useChart from '@/use/useChart'
 import use3DChart from '@/use/use3DChart'
 import LineChart from '@/components/Chart/LineChart.vue'
 import Line3DChart from '@/components/Chart/Line3DChart.vue'
+import JoystickController from '@/components/JoystickController.vue'
 
 import mock1 from '@/mock/1.json'
 import mock2 from '@/mock/2.json'
@@ -43,7 +50,8 @@ export default {
     LineChart,
     Line3DChart,
     ElRow, 
-    ElCol
+    ElCol,
+    JoystickController
   },
   setup(){
     //const store = useStore()
